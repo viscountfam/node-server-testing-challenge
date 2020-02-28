@@ -17,13 +17,17 @@ router.post("/", (req, res) => {
   const teamInfo = req.body
     teams
     .add(teamInfo)
-    .then(
+    .then(id => {
       teams.find()
+      .where('id', id[0])
       .then(team => {
-        res.json(team[team.length - 1])
+        res.status(201).json(team)
       })
+    }
+      
     )
     .catch(err => {
+      console.log(err)
       res.status(500).json({message: "failed to add the team"})
     })
 

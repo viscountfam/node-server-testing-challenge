@@ -23,6 +23,7 @@ function add(team) {
     .insert(team, 'id')
 }
 
+
 function update(changes, id) {
     return db('teams')
     .where({id})
